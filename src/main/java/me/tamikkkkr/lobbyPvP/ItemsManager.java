@@ -37,7 +37,10 @@ public class ItemsManager {
         if (plugin.getConfig().getInt("items.weapon.sharpness") > 0) {
             swordMeta.addEnchant(Enchantment.SHARPNESS, plugin.getConfig().getInt("items.weapon.sharpness"), true);
         }
-        swordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        swordMeta.addItemFlags(
+                ItemFlag.HIDE_ENCHANTS,
+                ItemFlag.HIDE_UNBREAKABLE
+        );
         swordMeta.getPersistentDataContainer().set(NamespacedKey.fromString("pvpsword"), PersistentDataType.STRING, "pvpsword");
 
         sword.setItemMeta(swordMeta);
@@ -121,7 +124,11 @@ public class ItemsManager {
             if (plugin.getConfig().getInt("items.helmet.protection") > 0) {
                 helmetMeta.addEnchant(Enchantment.PROTECTION, plugin.getConfig().getInt("items.helmet.protection"), true);
             }
-            helmetMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            helmetMeta.addItemFlags(
+                    ItemFlag.HIDE_ENCHANTS,
+                    ItemFlag.HIDE_UNBREAKABLE,
+                    ItemFlag.HIDE_ATTRIBUTES
+            );
             helmetMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("items.helmet.name", "&aPvP Helmet")));
             helmetMeta.getPersistentDataContainer().set(NamespacedKey.fromString("pvphelmet"), PersistentDataType.STRING, "pvphelmet");
             helmet.setItemMeta(helmetMeta);
@@ -137,7 +144,11 @@ public class ItemsManager {
             if (plugin.getConfig().getInt("items.chestplate.protection") > 0) {
                 chestplateMeta.addEnchant(Enchantment.PROTECTION, plugin.getConfig().getInt("items.chestplate.protection"), true);
             }
-            chestplateMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            chestplateMeta.addItemFlags(
+                    ItemFlag.HIDE_ENCHANTS,
+                    ItemFlag.HIDE_UNBREAKABLE,
+                    ItemFlag.HIDE_ATTRIBUTES
+            );
             chestplateMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("items.chestplate.name", "&aPvP Chestplate")));
             chestplateMeta.getPersistentDataContainer().set(NamespacedKey.fromString("pvpchestplate"), PersistentDataType.STRING, "pvpchestplate");
             chestplate.setItemMeta(chestplateMeta);
@@ -152,7 +163,11 @@ public class ItemsManager {
             if (plugin.getConfig().getInt("items.leggings.protection") > 0) {
                 leggingsMeta.addEnchant(Enchantment.PROTECTION, plugin.getConfig().getInt("items.leggings.protection"), true);
             }
-            leggingsMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            leggingsMeta.addItemFlags(
+                    ItemFlag.HIDE_ENCHANTS,
+                    ItemFlag.HIDE_UNBREAKABLE,
+                    ItemFlag.HIDE_ATTRIBUTES
+            );
             leggingsMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("items.leggings.name", "&aPvP Leggings")));
             leggingsMeta.getPersistentDataContainer().set(NamespacedKey.fromString("pvpleggings"), PersistentDataType.STRING, "pvpleggings");
             leggings.setItemMeta(leggingsMeta);
@@ -167,7 +182,11 @@ public class ItemsManager {
             if (plugin.getConfig().getInt("items.boots.protection") > 0) {
                 bootsMeta.addEnchant(Enchantment.PROTECTION, plugin.getConfig().getInt("items.boots.protection"), true);
             }
-            bootsMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            bootsMeta.addItemFlags(
+                    ItemFlag.HIDE_ENCHANTS,
+                    ItemFlag.HIDE_UNBREAKABLE,
+                    ItemFlag.HIDE_ATTRIBUTES
+            );
             bootsMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("items.boots.name", "&aPvP Boots")));
             bootsMeta.getPersistentDataContainer().set(NamespacedKey.fromString("pvpboots"), PersistentDataType.STRING, "pvpboots");
             boots.setItemMeta(bootsMeta);
