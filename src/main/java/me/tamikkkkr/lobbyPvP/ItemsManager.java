@@ -39,7 +39,8 @@ public class ItemsManager {
         }
         swordMeta.addItemFlags(
                 ItemFlag.HIDE_ENCHANTS,
-                ItemFlag.HIDE_UNBREAKABLE
+                ItemFlag.HIDE_UNBREAKABLE,
+                ItemFlag.HIDE_ATTRIBUTES
         );
         swordMeta.getPersistentDataContainer().set(NamespacedKey.fromString("pvpsword"), PersistentDataType.STRING, "pvpsword");
 
