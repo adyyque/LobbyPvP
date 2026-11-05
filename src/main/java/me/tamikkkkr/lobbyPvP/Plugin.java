@@ -66,7 +66,9 @@ public final class Plugin extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         getLogger().info("LobbyPvP plugin has been disabled!");
-
+        if (chatUtil != null) {
+            chatUtil.close();
+        }
         for (Player player: Bukkit.getOnlinePlayers()) {
             itemsManager.takeSet(player);
             itemsManager.takeSword(player);

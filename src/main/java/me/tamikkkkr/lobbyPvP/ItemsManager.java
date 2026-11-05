@@ -1,8 +1,7 @@
 package me.tamikkkkr.lobbyPvP;
 
-import me.tamikkkkr.lobbyPvP.utils.IsPvpWorld;
 import me.tamikkkkr.lobbyPvP.utils.LoadItems;
-import org.bukkit.ChatColor;
+import me.tamikkkkr.lobbyPvP.utils.ChatUtil;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -32,7 +31,7 @@ public class ItemsManager {
             return;
         }
 
-        swordMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("items.weapon.name", "&aPvP Sword &e(Hold to PvP)")));
+        swordMeta.setDisplayName(ChatUtil.colorLegacy(plugin.getConfig().getString("items.weapon.name", "&aPvP Sword &e(Hold to PvP)")));
         swordMeta.setUnbreakable(true);
         if (plugin.getConfig().getInt("items.weapon.sharpness") > 0) {
             swordMeta.addEnchant(Enchantment.SHARPNESS, plugin.getConfig().getInt("items.weapon.sharpness"), true);
@@ -130,7 +129,7 @@ public class ItemsManager {
                     ItemFlag.HIDE_UNBREAKABLE,
                     ItemFlag.HIDE_ATTRIBUTES
             );
-            helmetMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("items.helmet.name", "&aPvP Helmet")));
+            helmetMeta.setDisplayName(ChatUtil.colorLegacy(plugin.getConfig().getString("items.helmet.name", "&aPvP Helmet")));
             helmetMeta.getPersistentDataContainer().set(NamespacedKey.fromString("pvphelmet"), PersistentDataType.STRING, "pvphelmet");
             helmet.setItemMeta(helmetMeta);
 
@@ -150,7 +149,7 @@ public class ItemsManager {
                     ItemFlag.HIDE_UNBREAKABLE,
                     ItemFlag.HIDE_ATTRIBUTES
             );
-            chestplateMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("items.chestplate.name", "&aPvP Chestplate")));
+            chestplateMeta.setDisplayName(ChatUtil.colorLegacy(plugin.getConfig().getString("items.chestplate.name", "&aPvP Chestplate")));
             chestplateMeta.getPersistentDataContainer().set(NamespacedKey.fromString("pvpchestplate"), PersistentDataType.STRING, "pvpchestplate");
             chestplate.setItemMeta(chestplateMeta);
         }
@@ -169,7 +168,7 @@ public class ItemsManager {
                     ItemFlag.HIDE_UNBREAKABLE,
                     ItemFlag.HIDE_ATTRIBUTES
             );
-            leggingsMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("items.leggings.name", "&aPvP Leggings")));
+            leggingsMeta.setDisplayName(ChatUtil.colorLegacy(plugin.getConfig().getString("items.leggings.name", "&aPvP Leggings")));
             leggingsMeta.getPersistentDataContainer().set(NamespacedKey.fromString("pvpleggings"), PersistentDataType.STRING, "pvpleggings");
             leggings.setItemMeta(leggingsMeta);
         }
@@ -188,7 +187,7 @@ public class ItemsManager {
                     ItemFlag.HIDE_UNBREAKABLE,
                     ItemFlag.HIDE_ATTRIBUTES
             );
-            bootsMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("items.boots.name", "&aPvP Boots")));
+            bootsMeta.setDisplayName(ChatUtil.colorLegacy(plugin.getConfig().getString("items.boots.name", "&aPvP Boots")));
             bootsMeta.getPersistentDataContainer().set(NamespacedKey.fromString("pvpboots"), PersistentDataType.STRING, "pvpboots");
             boots.setItemMeta(bootsMeta);
 
