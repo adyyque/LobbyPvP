@@ -56,7 +56,7 @@ public final class Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(itemSlotChangeListener, chatUtil, this, isPvpWorld, itemsManager), this);
         getServer().getPluginManager().registerEvents(new PlayerRespawnListener(itemsManager, isPvpWorld, this), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveListener(itemSlotChangeListener, itemsManager, isPvpWorld), this);
-        getServer().getPluginManager().registerEvents(new PlayerInteractListener(this, itemSlotChangeListener, isPvpWorld), this);
+        getServer().getPluginManager().registerEvents(new PlayerInteractListener(this, itemSlotChangeListener, isPvpWorld, chatUtil), this);
         getServer().getPluginManager().registerEvents(new PlayerHungerListener(isPvpWorld), this);
         getServer().getPluginManager().registerEvents(new PlayerTeleportJoinListener(isPvpWorld, itemsManager, itemSlotChangeListener), this);
 
@@ -84,7 +84,7 @@ public final class Plugin extends JavaPlugin {
         loadItems.loadItems();
         this.chatUtil = new ChatUtil(this);
         this.itemsManager = new ItemsManager(loadItems, this);
-        this.itemSlotChangeListener = new ItemSlotChangeListener(loadItems, itemsManager, this, isPvpWorld);
+        this.itemSlotChangeListener = new ItemSlotChangeListener(loadItems, itemsManager, this, isPvpWorld, chatUtil);
 
     }
 

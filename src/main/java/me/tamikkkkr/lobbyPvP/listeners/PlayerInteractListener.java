@@ -1,5 +1,6 @@
 package me.tamikkkkr.lobbyPvP.listeners;
 
+import me.tamikkkkr.lobbyPvP.utils.ChatUtil;
 import me.tamikkkkr.lobbyPvP.utils.IsPvpWorld;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -29,11 +30,13 @@ public class PlayerInteractListener implements Listener {
     private final Plugin plugin;
     private final ItemSlotChangeListener itemSlotChangeListener;
     private final IsPvpWorld isPvpWorld;
+    private final ChatUtil chatUtil;
 
-    public PlayerInteractListener(Plugin plugin, ItemSlotChangeListener itemSlotChangeListener, IsPvpWorld isPvpWorld) {
+    public PlayerInteractListener(Plugin plugin, ItemSlotChangeListener itemSlotChangeListener, IsPvpWorld isPvpWorld, ChatUtil chatUtil) {
         this.plugin = plugin;
         this.itemSlotChangeListener = itemSlotChangeListener;
         this.isPvpWorld = isPvpWorld;
+        this.chatUtil = chatUtil;
     }
 
     @EventHandler
@@ -266,10 +269,8 @@ public class PlayerInteractListener implements Listener {
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, speedDuration * 20, speedAmplifier, false, false, true));
         player.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, strengthDuration * 20, strengthAmplifier, false, false, true));
 
-        if (!plugin.getConfig().getString("lang.ability-activate").isEmpty()) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString(
-                    "lang.ability-activate", "&aYou've gained extra &6damage &aand &6speed&a!")));
-        }
+        String message = plugin.getConfig().getString("lang.ability-activate", "&aYou've gained extra &6damage &aand &6speed&a!");
+        if (message != null && !message.isEmpty()) chatUtil.sendMessage(player, message);
 
     }
 

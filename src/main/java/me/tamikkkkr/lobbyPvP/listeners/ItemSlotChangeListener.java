@@ -2,6 +2,7 @@ package me.tamikkkkr.lobbyPvP.listeners;
 
 import me.tamikkkkr.lobbyPvP.ItemsManager;
 import me.tamikkkkr.lobbyPvP.Plugin;
+import me.tamikkkkr.lobbyPvP.utils.ChatUtil;
 import me.tamikkkkr.lobbyPvP.utils.IsPvpWorld;
 import me.tamikkkkr.lobbyPvP.utils.LoadItems;
 import org.bukkit.ChatColor;
@@ -26,6 +27,7 @@ public class ItemSlotChangeListener implements Listener {
     private final ItemsManager itemsManager;
     private final Plugin plugin;
     private final IsPvpWorld isPvpWorld;
+    private final ChatUtil chatUtil;
 
     // Small fixed delay before the enable countdown starts, so quickly scrolling past
     // the sword slot doesn't trigger the countdown message/sound.
@@ -35,11 +37,12 @@ public class ItemSlotChangeListener implements Listener {
     private final HashMap<UUID, BukkitRunnable> activeEnableTimers = new HashMap<>();
     private final HashMap<UUID, BukkitRunnable> activeDisableTimers = new HashMap<>();
 
-    public ItemSlotChangeListener(LoadItems loadItems, ItemsManager itemsManager, Plugin plugin, IsPvpWorld isPvpWorld) {
+    public ItemSlotChangeListener(LoadItems loadItems, ItemsManager itemsManager, Plugin plugin, IsPvpWorld isPvpWorld, ChatUtil chatUtil) {
         this.loadItems = loadItems;
         this.itemsManager = itemsManager;
         this.plugin = plugin;
         this.isPvpWorld = isPvpWorld;
+        this.chatUtil = chatUtil;
     }
 
 
@@ -129,9 +132,8 @@ public class ItemSlotChangeListener implements Listener {
 
                             if (enableTimer == 0) {
 
-                                if (!plugin.getConfig().getString("lang.pvp-enabled").isEmpty()) {
-                                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("lang.pvp-enabled", "&aPvP Enabled")));
-                                }
+                                String message = plugin.getConfig().getString("lang.pvp-enabled", "&aPvP Enabled");
+                                if (message != null && !message.isEmpty()) chatUtil.sendMessage(player, message);
 
                                 playCountdownSound(player, 1.0F);
 
@@ -142,10 +144,8 @@ public class ItemSlotChangeListener implements Listener {
 
                             } else {
 
-                                if (!plugin.getConfig().getString("lang.pvp-enabling").isEmpty()) {
-                                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString(
-                                            "lang.pvp-enabling", "&aPvP enabling in %time% second(s).").replace("%time%", Integer.toString(enableTimer))));
-                                }
+                                String message = plugin.getConfig().getString("lang.pvp-enabling", "&aPvP enabling in %time% second(s).");
+                                if (message != null && !message.isEmpty()) chatUtil.sendMessage(player, message.replace("%time%", Integer.toString(enableTimer)));
 
                                 playCountdownSound(player, 2.0F);
 
@@ -187,9 +187,8 @@ public class ItemSlotChangeListener implements Listener {
 
                             if (disableTimer == 0) {
 
-                                if (!plugin.getConfig().getString("lang.pvp-disabled").isEmpty()) {
-                                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("lang.pvp-disabled", "&cPvP Disabled")));
-                                }
+                                String message = plugin.getConfig().getString("lang.pvp-disabled", "&cPvP Disabled");
+                                if (message != null && !message.isEmpty()) chatUtil.sendMessage(player, message);
 
                                 playCountdownSound(player, 1.0F);
 
@@ -204,10 +203,8 @@ public class ItemSlotChangeListener implements Listener {
 
                             } else {
 
-                                if (!plugin.getConfig().getString("lang.pvp-disabling").isEmpty()) {
-                                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString(
-                                            "lang.pvp-disabling", "&cPvP disabling in %time% second(s).").replace("%time%", Integer.toString(disableTimer))));
-                                }
+                                String message = plugin.getConfig().getString("lang.pvp-disabling", "&cPvP disabling in %time% second(s).");
+                                if (message != null && !message.isEmpty()) chatUtil.sendMessage(player, message.replace("%time%", Integer.toString(disableTimer)));
 
                                 playCountdownSound(player, 2.0F);
                                 disableTimer--;

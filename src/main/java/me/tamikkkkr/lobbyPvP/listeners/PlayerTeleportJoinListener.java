@@ -24,8 +24,6 @@ public class PlayerTeleportJoinListener implements Listener {
     public void onPlayerTeleportJoin(PlayerTeleportEvent event) {
 
         Player player = event.getPlayer();
-
-        // Мир, В КОТОРЫЙ телепортируется игрок (целевой мир)
         World toWorld = event.getTo().getWorld();
 
         if (isPvpWorld.isPvpWorld(toWorld)) {
