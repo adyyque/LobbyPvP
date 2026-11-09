@@ -3,6 +3,7 @@ package me.tamikkkkr.lobbyPvP.commands;
 import me.tamikkkkr.lobbyPvP.ItemsManager;
 import me.tamikkkkr.lobbyPvP.Plugin;
 import me.tamikkkkr.lobbyPvP.listeners.ItemSlotChangeListener;
+import me.tamikkkkr.lobbyPvP.utils.ChatUtil;
 import me.tamikkkkr.lobbyPvP.utils.LoadItems;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -39,8 +40,7 @@ public class PluginReloadCommand implements CommandExecutor {
                     if (sender.hasPermission("lobbypvp.reload")) {
 
                         plugin.reloadConfig();
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString(
-                                "lang.reloaded", "&aSuccessfully reloaded the HubPvP config!")));
+                        sender.sendMessage(ChatUtil.colorLegacy(plugin.getConfig().getString("lang.reloaded", "&aSuccessfully reloaded config!")));
                         loadItems.loadItems();
 
                         for (Player player: Bukkit.getServer().getOnlinePlayers()) {
