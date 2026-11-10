@@ -19,6 +19,28 @@ public class ChatUtil {
 
     public static Component color(String text) {
         if (text == null || text.isEmpty()) return Component.empty();
+        text = text.replaceAll("(?i)§0", "<black>");
+        text = text.replaceAll("(?i)§1", "<dark_blue>");
+        text = text.replaceAll("(?i)§2", "<dark_green>");
+        text = text.replaceAll("(?i)§3", "<dark_aqua>");
+        text = text.replaceAll("(?i)§4", "<dark_red>");
+        text = text.replaceAll("(?i)§5", "<dark_purple>");
+        text = text.replaceAll("(?i)§6", "<gold>");
+        text = text.replaceAll("(?i)§7", "<gray>");
+        text = text.replaceAll("(?i)§8", "<dark_gray>");
+        text = text.replaceAll("(?i)§9", "<blue>");
+        text = text.replaceAll("(?i)§a", "<green>");
+        text = text.replaceAll("(?i)§b", "<aqua>");
+        text = text.replaceAll("(?i)§c", "<red>");
+        text = text.replaceAll("(?i)§d", "<light_purple>");
+        text = text.replaceAll("(?i)§e", "<yellow>");
+        text = text.replaceAll("(?i)§f", "<white>");
+        text = text.replaceAll("(?i)§l", "<bold>");
+        text = text.replaceAll("(?i)§o", "<italic>");
+        text = text.replaceAll("(?i)§n", "<underlined>");
+        text = text.replaceAll("(?i)§m", "<strikethrough>");
+        text = text.replaceAll("(?i)§k", "<obfuscated>");
+        text = text.replaceAll("(?i)§r", "<reset>");
         text = text.replaceAll("(?i)&#([a-f0-9]{6})", "<#$1>");
         text = text.replaceAll("(?i)&0", "<black>");
         text = text.replaceAll("(?i)&1", "<dark_blue>");
